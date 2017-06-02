@@ -74,3 +74,34 @@ RSpec.describe "API::V1::Applications", type: :request do
           expect(body['applications'].last['user_id']).not_to eq(user2.id)
         end
       end
+
+      describe "GET /api/v1.users/:user_id/applications/:id" do
+
+        describe "on success" do
+
+          it "returns on application based on its id" do
+
+            get "/api/v1/users/#{@user.id}/applications/#{@application.id}"
+
+            body = JSON.parse(response.body)
+
+            expect(response.status).to eq(200)
+            expect(body['application']).not_to eq(nil)
+            expect(body['application']['id']).to eq(@application.id)
+          end
+        end
+
+
+        describe "on failure" do
+          it "returns a status of 404 with an error message" do
+
+            get "/api/v1/users/#{@user.id}/applications/fakeid"
+
+            body = JSON.parse(response.body)
+
+            expect(response.status).to eq(404)
+            expect(body["errors"]).to eq({"message"=> "Page not found"})
+
+          end
+        end
+    end
