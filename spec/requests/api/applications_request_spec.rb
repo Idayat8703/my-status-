@@ -36,3 +36,19 @@ RSpec.describe "API::V1::Applications", type: :request do
     end
 
   end
+
+    describe "routes" do
+
+      before(:each) do
+        @user = create(:user)
+        3.times do
+          @user.applications.create(company: Faker::Company.name)
+        end
+        @application = @user.applications.first
+        @token = Auth.create_token(@user.id)
+        @token_headers = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': "Bearer: #{@token}"
+        }
+      end
