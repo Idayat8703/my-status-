@@ -6,6 +6,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_token!
     if request.env['HTTP_AUTHORIZATION']
+
       begin
         token = request.env['HTTP_AUTHORIZATION'].split(" ").last
         decoded = Auth.decode_token(token)
@@ -26,7 +27,6 @@ class ApplicationController < ActionController::API
         ]
       }, status: 403
     end
-
   end
 
   def current_user
