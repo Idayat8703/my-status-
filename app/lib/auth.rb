@@ -6,6 +6,7 @@ class Auth
   end
 
   def self.decode_token(token)
-    JWT.decode(token, ENV['AUTH_SECRET'], true, {algorithm: ENV['AUTH_ALGORITHM']})
+    JWT.decode(token, ENV['AUTH_SECRET'], true, {algorithm: ENV['AUTH_ALGORITHM']}
+    )
   end
 end
