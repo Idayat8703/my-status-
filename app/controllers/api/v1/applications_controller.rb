@@ -59,5 +59,24 @@ class Api::V1::ApplicationsController < ApplicationController
         }, status: 403
       end
     end
+    def destroy
+      application = Application.find_by(id: params[:id])
+      if application
+        application.destroy
+        head :no_content
+      else
+        render json: {
+          errors: {
+            message: "Page not found"
+          }
+        }, status: 404
+      end
+    end
 
-  
+    private
+
+    def application_params
+      params.require(:application).permit(:company, :contact_name, :contact_title, :date, :action, :first_contact, :job_title, :job_url, :notes, :complete, :next_step, :status)
+    end
+
+    end
