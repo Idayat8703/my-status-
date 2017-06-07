@@ -27,3 +27,7 @@ class ApplicationController < ActionController::API
       }, status: 403
     end
   end
+  def current_user
+    @user ||= User.find_by(id: @user_id) if @user_id
+  end
+end
