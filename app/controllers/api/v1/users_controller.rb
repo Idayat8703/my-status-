@@ -22,3 +22,10 @@ class Api::V1::UsersController < ApplicationController
       }, status: 404
     end
   end
+
+    private
+
+    def user_params
+      params.require(:user).permit(:name, :username, :password)
+    end
+    end
