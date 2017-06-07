@@ -14,3 +14,16 @@ class Api::V1::AuthController < ApplicationController
         errors: ["Password does not match"]
       }, status: 403
     end
+  end
+
+  def refresh
+    render 'users/user_with_token.json.jbuilder', user: current_user
+  end
+
+  def ping
+    render json: {
+      status: "OK"
+    }
+  end
+
+end
