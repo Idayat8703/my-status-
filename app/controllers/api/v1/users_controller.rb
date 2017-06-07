@@ -10,5 +10,15 @@ class Api::V1::UsersController < ApplicationController
       }, status: 500
     end
   end
-
-  
+  def show
+    @user = User.find_by(id: params[:id])
+    if @user
+      render 'users/user_without_token.json.jbuilder', user: @user
+    else
+      render json: {
+        errors: [
+          {message: "Page not found"}
+        ]
+      }, status: 404
+    end
+  end
