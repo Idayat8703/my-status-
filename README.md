@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Overview
 
-Things you may want to cover:
+This is an API User can  keep track of the different applications they've submitted, and the various actions they've taken in regards to said applications (e-mails, communications, meetings, interviews, etc.)
 
-* Ruby version
+The API was built using Rails V. 5.0.2
 
-* System dependencies
+It uses a PostgreSQL database.
 
-* Configuration
+The test suite was built using RSpec.
 
-* Database creation
 
-* Database initialization
+License
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The app is available as open source under the terms of the MIT License.
