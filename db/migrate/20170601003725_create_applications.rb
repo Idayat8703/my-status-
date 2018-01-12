@@ -14,6 +14,7 @@ class CreateApplications < ActiveRecord::Migration[5.0]
       t.boolean :complete, default: false
       t.string :next_step
       t.string :status
+      t.integer :vote
 
       t.timestamps
     end
